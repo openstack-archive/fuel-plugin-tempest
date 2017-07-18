@@ -1,0 +1,9 @@
+tempest:
+  name: 'Tempest'
+  description: 'Install Tempest virtualenv'
+  has_primary: false
+  public_up_required: false
+  weight: 100
+  limits:
+    max: 1
+    recommended: 1
