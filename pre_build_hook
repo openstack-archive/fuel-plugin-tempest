@@ -1,0 +1,7 @@
+#!/bin/bash -eux
+
+TEMPEST_DEB="virtualenv-tempest.deb"
+TEMPEST_DEB_URL="http://jenkins.example.net/job/virtualenv-tempest/lastSuccessfulBuild/artifact/$TEMPEST_DEB"
+
+mkdir -p repositories/ubuntu
+wget -qO "repositories/ubuntu/$TEMPEST_DEB" "${TEMPEST_DEB_URL}"

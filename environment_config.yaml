@@ -1,0 +1,37 @@
+attributes:
+  metadata:
+    group: 'other'
+  run_tests:
+    label: "Run tests"
+    description: "If checked, test run will be part of deploy process. If not, plugin will simply install virtualenv-tempest deb on the node."
+    type: checkbox
+    value: true
+    weight: 10
+  image_name:
+    label: "Glance image name"
+    description: "What glance image to use for tests."
+    type: text
+    value: "TestVM"
+    weight: 20
+  run_script:
+    label: "Test run script"
+    description: "Bash commands to run tests with."
+    type: textarea
+    value: |
+      # you should limit testing scope by providing a regexp to tempest run
+      # for example:
+      #   tempest run --workspace default -r TestSchedulerAwareConsolidation
+      #   or
+      #   tempest run --workspace default -r AZAdminV2TestJSON.test_get_availability_zone_list_detail
+      # `default` workspace is created by blugin, it's config is filled with deployment facts.
+      # it is located in /var/lib/tempest/default.
+      #
+      # More documentation and examples as:
+      # https://docs.openstack.org/developer/tempest/run.html
+      #
+      # This text field will be inlined in bash file and executed by puppet.
+      # Place tempest run commands (or any others) one on each line, right after this one:
+    weight: 30
+    restrictions:
+      - condition: "settings:tempest.run_tests.value == false"
+        action: "hide"
