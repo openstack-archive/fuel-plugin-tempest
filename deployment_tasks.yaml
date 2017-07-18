@@ -1,0 +1,21 @@
+- id: fp-tempest-install
+  type: puppet
+  version: 2.0.0
+  role: [tempest]
+  required_for: [post_deployment_end]
+  requires: [post_deployment_start]
+  parameters:
+    puppet_manifest: puppet/manifests/tempest_install.pp
+    puppet_modules: puppet/modules:/etc/puppet/modules
+    timeout: 120
+
+- id: fp-tempest-run
+  type: puppet
+  version: 2.0.0
+  role: [tempest]
+  required_for: [post_deployment_end]
+  requires: [fp-tempest-install]
+  parameters:
+    puppet_manifest: puppet/manifests/tempest_run.pp
+    puppet_modules: /etc/puppet/modules
+    timeout: 3600
