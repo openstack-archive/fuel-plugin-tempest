@@ -1,4 +1,0 @@
----
-features:
-  - Add oslo::privsep define to configure privsep_${entrypoint} section
-    of given config resource.

@@ -1,4 +1,0 @@
----
-deprecations:
-  - verbose parameter is deprecated and does nothing. It will be removed
-    after Newton cycle.
